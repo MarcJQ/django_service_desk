@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+<body>
+    <header class="service-desk-header">
+        <h1>SERVICE DESK LOGIN</h1>
+    </header>
+    <div class="login-container">
+        <div class="logo">
+            <img src="{% static 'pictures/logo.png' %}" alt="Logo">
+        </div>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="input-group">
+                <label for="{{ form.username.id_for_label }}">Username:</label>
+                {{ form.username }}  <!-- This renders the username field -->
+                {{ form.username.errors }}  <!-- Display any errors related to the username field -->
+            </div>
+            <div class="input-group">
+                <label for="{{ form.password.id_for_label }}">Password:</label>
+                {{ form.password }}  <!-- This renders the password field -->
+                {{ form.password.errors }}  <!-- Display any errors related to the password field -->
+            </div>
+            {{ form.non_field_errors }}  <!-- Display any non-field errors -->
+            <button type="submit">Login</button>
+        </form>
+        <div class="signup-link"></div>
+            <p>Don't have an account yet? Register here</p>
+
+        </div>
+    </div>
+</body>
+</html>
